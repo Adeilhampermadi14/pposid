@@ -25,18 +25,18 @@ class AdminController extends Controller
         }
         return view('admin.login');
     }
-    public function logout(){
+    public function logout_admin(){
         Auth::guard('admin')->logout();
         return redirect('login');
     }
-    public function data_reservasi()
-    {
-        return view('admin.data_reservasi');
-    }
-    public function data_laporan()
-    {
-        return view('admin.laporan.data_laporan');
-    }
+    // public function data_reservasi()
+    // {
+    //     return view('admin.data_reservasi');
+    // }
+    // public function data_laporan()
+    // {
+    //     return view('admin.laporan.data_laporann');
+    // }
     public function delete($id){
         $user = User::where('id',$id);
         $user->forceDelete();

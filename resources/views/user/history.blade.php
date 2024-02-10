@@ -33,7 +33,7 @@
               <a href="{{url('reschedule')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reschedule</a>
              </li>
             <li>
-              <a href="{{url('login_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
+              <a href="{{url('logout_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
                        </li>
           </ul>
       </div>
@@ -57,30 +57,20 @@
                         </tr>
                       </thead>
                     <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>RM100001</td>
-                          <td>Danang</td>
-                          <td>Amanah</td>
-                          <td>1 Januari 2001</td>
-                          <td>08:00 - 10:00</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>RM100002</td>
-                          <td>Syatiri</td>
-                          <td>Takwa</td>
-                          <td>2 Januari 2002</td>
-                          <td>08:00 - 10:00</td>
-                        </tr> 
-                        <tr>
-                          <td>1</td>
-                          <td>RM100003</td>
-                          <td>Arrrr</td>
-                          <td>Tawakal</td>
-                          <td>3 Januari 2003</td>
-                          <td>08:00 - 10:00</td>
-                        </tr> 
+                        <?php $i = $reservasi->firstItem() ?>
+                      @foreach($reservasi as $row)
+                          <tr>
+                              <td>{{$i}}</td>
+                              <td>{{$row->kode_booking}}</td>
+                              <td>{{$row->nama_penanggung_jawab}}</td>
+                              <td>{{$row->nama_ruangan}}</td>
+                              <td>{{$row->tanggal}}</td>
+                              <td>{{$row->waktu_mulai}}-  {{$row->waktu_selesai}}</td>
+                 
+                          </tr>
+                          <?php $i++ ?>
+                      @endforeach
+                       
                     </tbody>
                     </table>
 </div>

@@ -11,17 +11,15 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Validator;
 
-class ReservasiUserController extends Controller
+class HistoryUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data_ruangan = Ruangan::all();
-        $data_direktorat = Direktorat::all();
         $reservasi = Reservasi::all();
-        return view('user.reservasi.reservasi', compact('reservasi', 'data_ruangan', 'data_direktorat'));
+        return view('user.history')->with('history', $reservasi);
     }
 
     /**

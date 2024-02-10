@@ -45,7 +45,7 @@
             <a href="{{url('reschedule')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reschedule</a>
           </li>
           <li>
-              <a href="{{url('login_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
+              <a href="{{url('logout_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
           </li>
         </ul>
       </div>
@@ -108,21 +108,21 @@
 
     <!-- Kegiatan -->
     <div class="left-[32px] top-[330px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kegiatan :</div>
-    <input class="w-[350px] h-[30px] left-[32px] top-[355px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="kegiatan" id="kegiatan" required>
+    <input value="k" class="w-[350px] h-[30px] left-[32px] top-[355px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="kegiatan" id="kegiatan" required>
 
     <!-- Jumlah peserta -->
     <div class="left-[30px] top-[395px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah peserta :</div>
-    <input class="w-40 h-[30px] left-[32px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="jumlah_peserta" id="jumlah_peserta" type="number" required>
+    <input value="1" class="w-40 h-[30px] left-[32px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="jumlah_peserta" id="jumlah_peserta" type="number" required>
 
     <!-- Jumlah peserta -->
     <div class="left-[220px] top-[395px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah panitia :</div>
-    <input class="w-40 h-[30px] left-[222px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
+    <input value="1" class="w-40 h-[30px] left-[222px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
 
     <div class="w-[30px] h-[30px] left-[30px] top-[460px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">2</div>
 
     <!-- Nama penanggung jawab -->
     <div class="left-[32px] top-[500px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Nama penanggung jawab :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[525px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="nama_penanggung_jawab" id="nama_penanggung_jawab" required>
+    <input value="k" class="w-[350px] h-[30px] left-[30px] top-[525px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="nama_penanggung_jawab" id="nama_penanggung_jawab" required>
       
     <!-- Direktorat -->
     <div class="left-[32px] top-[565px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Direktorat :</div>
@@ -135,16 +135,16 @@
 
     <!-- Divisi -->
     <div class="left-[32px] top-[630px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Divisi :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[655px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="divisi" id="divisi" required>
+    <input value="a" class="w-[350px] h-[30px] left-[30px] top-[655px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="divisi" id="divisi" required>
 
     <!-- Bagian -->
     <div class="left-[30px] top-[695px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Bagian :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[720px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="bagian" id="bagian" required>
+    <input value="a" class="w-[350px] h-[30px] left-[30px] top-[720px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="bagian" id="bagian" required>
       
     <!-- Kebutuhan/pendukung --> 
     <div class="left-[30px] top-[760px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kebutuhan :</div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Videotron" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">
+      <input checked id="pendukung" type="checkbox" name="pendukung" value="Videotron" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">
       <label for="pendukung" class=" left-[60px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">Videotron</label>
     </div>
     <div class="flex items-center">
