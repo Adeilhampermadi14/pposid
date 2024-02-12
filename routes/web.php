@@ -20,6 +20,18 @@ use App\Http\Controllers\RescheduleController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
+
+Route::get('/invoice', function () {
+    $reservasi = App\Models\Reservasi::all(); // Misalkan Anda ingin mengirim data reservasi ke tampilan invoice
+    $pdf = new Dompdf(['orientation' => 'potrait']);
+    $pdf->loadHtml(View::make('invoice', ['reservasi' => $reservasi])); // Kirim data reservasi ke tampilan invoice
+    $pdf->render();
+    return $pdf->stream('invoice.pdf');
+});
+
+
 
 Route::prefix('/')->namespace('App\Http\Controllers')->group(function(){
     Route::match (['get','post'], 'login','AdminController@login');
@@ -38,13 +50,13 @@ Route::resource('data_laporan', LaporanController::class);
 });
 
 
-Route::resource('reschedule', RescheduleController::class);
 Route::post('reservasi/get-available-time', [ReservasiUserController::class, 'getAvailableTime'])->name('reservasi.getAvailableTime');
 
 Route::prefix('/')->namespace('App\Http\Controllers')->group(function(){
     Route::get('/', 'UserController@loading');
     Route::match (['get','post'], 'login_user','UserController@login_user');
     Route::group(['middleware'=>['user']],function(){
+        Route::resource('reschedule', RescheduleController::class);
         Route::resource('reservasi', ReservasiUserController::class);
         Route::get('home', 'UserController@home');
         Route::get('logout_user', 'UserController@logout_user');

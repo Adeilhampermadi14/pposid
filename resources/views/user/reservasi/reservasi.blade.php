@@ -123,6 +123,7 @@
     <!-- Nama penanggung jawab -->
     <div class="left-[32px] top-[500px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Nama penanggung jawab :</div>
     <input value="k" class="w-[350px] h-[30px] left-[30px] top-[525px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="nama_penanggung_jawab" id="nama_penanggung_jawab" required>
+    <input  class="hidden" value="hidden"  name="kode_booking">
       
     <!-- Direktorat -->
     <div class="left-[32px] top-[565px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Direktorat :</div>

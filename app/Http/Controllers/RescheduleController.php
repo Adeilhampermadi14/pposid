@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 use App\Models\Reservasi;
 use App\Models\Ruangan;
 use App\Models\Direktorat;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Validator;
 
 class RescheduleController extends Controller
 {
@@ -35,44 +39,34 @@ class RescheduleController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'kode_booking' => 'required|unique:reservasi',
-            'nama_penanggung_jawab' => 'required',
+            'kode_booking' => 'required',
             'tanggal' => 'required|date',
-            'waktu_mulai' => 'required|date_format:H:i',
-            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
-            'kegiatan' => 'required',
-            'jumlah_peserta' => 'required|numeric',
-            'jumlah_panitia' => 'required|numeric',
-            'nama_ruangan' => 'required',
-            'direktorat' => 'required',
-            'divisi' => 'required',
-            'bagian' => 'required',
-            'status' => '',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+ 
             'pendukung' => 'required',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $kode_booking = Str::random(5);
-        $reservasi = Reservasi::create([
-            'kode_booking' => $request->kode_booking,
-            'nama_penanggung_jawab' => $request->nama_penanggung_jawab,
-            'tanggal' => $request->tanggal,
-            'waktu_mulai' => $request->waktu_mulai,
-            'waktu_selesai' => $request->waktu_selesai,
-            'kegiatan' => $request->kegiatan,
-            'jumlah_peserta' => $request->jumlah_peserta,
-            'jumlah_panitia' => $request->jumlah_panitia,
-            'nama_ruangan' => $request->nama_ruangan,
-            'direktorat' => $request->direktorat,
-            'divisi' => $request->divisi,
-            'bagian' => $request->bagian,
-            'status' => $request->status,
-            'pendukung' => implode(', ', $request->pendukung),
-        ]);
+        $tanggal = Carbon::createFromFormat('m/d/Y', $request->tanggal)->format('Y-m-d');
+        $pendukung_array = explode(',', $request->pendukung);
+        $getReservasi = Reservasi::where('kode_booking', $request->kode_booking)->first();
 
-        return redirect()->route('user.reschedule.reschedule')->with('success', 'reschedule berhasil ditambahkan');
+        if ($getReservasi === null) {
+            return redirect()->to('history')->with('error', 'Reservasi tidak ditemukan');
+        }
+
+        $getReservasi->tanggal = $tanggal;
+        $getReservasi->waktu_mulai = $request->waktu_mulai;
+        $getReservasi->waktu_selesai = $request->waktu_selesai;
+        $getReservasi->pendukung = implode('', $pendukung_array);
+        $getReservasi->save();
+
+        return redirect()->to('history')->with('success', 'Reservasi berhasil diperbarui');
+
+
     }
 
     /**

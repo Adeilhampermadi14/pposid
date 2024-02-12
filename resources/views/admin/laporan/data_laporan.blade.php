@@ -73,6 +73,7 @@
                   </tbody>
                     </table>
                   </div>
+                  <button class="w-max h-max  bg-red-600 " type="submit"  onclick="window.location='{{ url('invoice') }}'">Export Pdf</button>
                 </div>
               </div>
             </div>
